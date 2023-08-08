@@ -5,7 +5,8 @@ output_tsv <- here::here("results", "penguins_mass.tsv")
 
 # Create data frame of mean mass for each species
 penguin_mass <- penguins |>
-  dplyr::group_by(species) |>
+  dplyr::group_by(species, island) |>
+  dplyr::filter(year == 2008) |>
   # ignore NAs when calculating mean
   dplyr::summarize(mean_mass = mean(body_mass_g, na.rm=TRUE))
 
