@@ -1,13 +1,28 @@
 # Load libraries ---------
 library(ggplot2)
 library(palmerpenguins)
+library(optparse)
 
-output_file <- here::here("plots", "penguin_histogram.png")
+# Load input options -------
+option_list <- list(
+  make_option(
+    opt_str = c("--bins"),
+    type = "integer",
+    default = 20,
+    help = "number of bins to use in the histogram"
+  )
+)
+opt <- parse_args(OptionParser(option_list = option_list))
+bins <- opt$bins
+
+output_file <- here::here("plots", 
+                          glue::glue("penguin_histogram_{bins}_bins.png")
+)
 
 # Make histogram of penguin bill depth --------
 penguin_histogram <- ggplot(penguins) +
   aes(x = bill_depth_mm) +
-  geom_histogram() +
+  geom_histogram(bins = bins) +
   labs(x = "Penguin bill depth (mm)")
 
 # Export plot
