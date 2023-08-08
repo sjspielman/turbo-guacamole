@@ -22,7 +22,7 @@ output_file <- here::here("plots",
 # Make histogram of penguin bill depth --------
 penguin_histogram <- ggplot(penguins) +
   aes(x = bill_depth_mm) +
-  geom_histogram(bins = bins) +
+  geom_histogram(bins = bins, color = "dodgerblue", fill = "gold") +
   labs(x = "Penguin bill depth (mm)")
 
 # Export plot
