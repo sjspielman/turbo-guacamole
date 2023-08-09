@@ -8,7 +8,7 @@ option_list <- list(
   make_option(
     opt_str = c("--bins"),
     type = "integer",
-    default = 20,
+    default = 40,
     help = "number of bins to use in the histogram"
   )
 )
